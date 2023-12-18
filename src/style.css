@@ -1,0 +1,11 @@
+body{
+    margin: 0;
+    font-family: Arial;
+    background-color: var(--light-background);
+    color: var(--light-text);
+
+    --dark-background: #010906;
+    --light-background: #ECF3F0;
+    --light-text:#08120D;
+    --dark-text: #ECF7F2;
+}
