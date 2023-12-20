@@ -1,13 +1,41 @@
 body{
     margin: 0;
     font-family: Arial;
-    background-color: var(--light-background);
-    color: var(--light-text);
+    background-color: var(--dark-background);
+    color: var(--dark-text);
 
     --card-height: 65vh;
     --card-width: calc(var(--card-height) / 1.5);
-    --dark-background: #010906;
-    --light-background: #ECF3F0;
-    --light-text:#08120D;
-    --dark-text: #ECF7F2;
+    --dark-background: #202430;
+    --dark-secondary: #4E586E;
+    --light-background: #ECEFF4;
+    --light-secondary: #E5E9F0;
+    --light-text:#000000;
+    --dark-text: #FFFFFF;
+}
+#navbar{
+    width: 100vw;
+    height: 30px;
+    -webkit-app-region: drag;
+    display: flex;
+    justify-content: space-between;
+}
+.spacer{
+    width: 98vw;
+    border-radius: 30px;
+    margin-left: 1vw;
+    background-color: var(--dark-secondary);
+    border-color: var(--dark-secondary);
+    height: 2px;
+    box-shadow: none;
+    border-style: solid;
+}
+#content{
+    width: 100vw;
+    height: 100%;
+}
+#installdir{
+    height: 30px;
+    width: 100vw;
+    padding-bottom: 1px;
 }
