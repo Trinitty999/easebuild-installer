@@ -19,7 +19,9 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "reload": "^3.2.1"
+    "npm": "^10.2.5",
+    "reload": "^3.2.1",
+    "start": "^5.1.0"
   },
   "devDependencies": {
     "@electron-forge/cli": "^7.2.0",

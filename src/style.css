@@ -4,7 +4,7 @@ body{
     background-color: var(--dark-background);
     color: var(--dark-text);
 
-    --card-height: 65vh;
+    --card-height: 60vh;
     --card-width: calc(var(--card-height) / 1.5);
     --dark-background: #202430;
     --dark-secondary: #4E586E;
@@ -21,7 +21,8 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-.spacer{
+#spacer{
+    margin: 0;
     background-color: var(--dark-secondary);
     border-color: var(--dark-secondary);
     box-shadow: none;
@@ -29,14 +30,23 @@ body{
 }
 #content{
     width: 100vw;
-    height: 100%;
+    height: 86vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.cards{
+    width: var(--card-width);
+    height: var(--card-height);
+    border-radius: 17px;
+    box-shadow: 0px 0px 7px 7px rgba(0,0,0,0.10);
 }
 #installdir{
-    height: 30px;
+    height: 31px;
     width: 100vw;
-    padding-bottom: 1px;
+    margin-bottom: 0;
 }
-.windowbutton{
+#closebutton{
     width: 100%;
     height: 100%;
     border: none;
@@ -45,4 +55,7 @@ body{
 #windowicons{
     height: 100%;
 
+}
+.windowbutton:hover + #windowcloseicon{
+    color: #F54B64;
 }
