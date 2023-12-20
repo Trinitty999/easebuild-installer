@@ -4,6 +4,8 @@ body{
     background-color: var(--light-background);
     color: var(--light-text);
 
+    --card-height: 65vh;
+    --card-width: calc(var(--card-height) / 1.5);
     --dark-background: #010906;
     --light-background: #ECF3F0;
     --light-text:#08120D;
