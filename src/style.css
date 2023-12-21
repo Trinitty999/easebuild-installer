@@ -4,7 +4,10 @@ body{
     background-color: var(--dark-background);
     color: var(--dark-text);
 
-    --card-height: 60vh;
+    --green:#01C38D;
+    --orange:#F78361;
+    --red:#F54B64;
+    --card-height: 55vh;
     --card-width: calc(var(--card-height) / 1.5);
     --dark-background: #202430;
     --dark-secondary: #4E586E;
@@ -30,19 +33,22 @@ body{
 }
 #content{
     width: 100vw;
-    height: 86vh;
+    height: 84vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
 }
 .cards{
     width: var(--card-width);
     height: var(--card-height);
+    border: 5px solid var(--dark-secondary);
     border-radius: 17px;
-    box-shadow: 0px 0px 7px 7px rgba(0,0,0,0.10);
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,0.10);
+    transition: ease-in-out 500ms;
+    cursor: pointer;
 }
 #installdir{
-    height: 31px;
+    height: 51px;
     width: 100vw;
     margin-bottom: 0;
 }
@@ -51,11 +57,25 @@ body{
     height: 100%;
     border: none;
     background-color: rgba(0, 0, 0, 0);
+    padding: 0;
 }
 #windowicons{
     height: 100%;
 
 }
-.windowbutton:hover + #windowcloseicon{
-    color: #F54B64;
+
+.cards:nth-child(1):hover{
+    border-color: var(--green);
+    box-shadow: 0px 0px 10px 10px rgba(1, 195, 141, 0.20);
+}
+.cards:nth-child(2):hover{
+    border-color: var(--orange);
+    box-shadow: 0px 0px 10px 10px rgba(247, 131, 97, 0.20);
+}
+.cards:nth-child(3):hover{
+    border-color: var(--red);
+    box-shadow: 0px 0px 10px 10px rgba(245, 75, 100, 0.20);
+}
+#closebutton:hover{
+    background-color: #F54B64;
 }
