@@ -66,7 +66,7 @@ ipcMain.on("repair", (e, arg) => {
 			}
 		});
 
-		fs.writeFile('testfile.txt', 'Hello world!', function (err) {
+		fs.writeFile('testfile.txt', 'Hello repaired world!', function (err) {
 			if (err) throw err;
 			console.log('Reinstalled successfully');
 		})

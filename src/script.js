@@ -18,7 +18,9 @@ cards[1].addEventListener('click', () => {
     window.ipcAPI.on("repaired", (data) => {
         cards[1].children[2].innerHTML = "Repaired"
     })
-    window.ipcAPI.on("not-installed", (data) => {})5
+    window.ipcAPI.on("not-installed", (data) => {
+        alert("Not installed, please install first!")
+    })
 })
 
 cards[2].addEventListener('click', () => {

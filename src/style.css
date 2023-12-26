@@ -27,7 +27,7 @@ body{
     height: 45px;
     -webkit-app-region: drag;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
 }
 #spacer{
@@ -60,7 +60,7 @@ body{
     user-select: none;
 }
 .cardsicon:nth-child(1){
-    transition: ease-in-out 500ms;    
+    transition: ease-in-out 500ms;   
 }
 .cards:nth-child(1):hover .cardsicon:nth-child(1){
     filter: drop-shadow(0px 0px 10px rgba(1, 195, 141, 0.60));
@@ -95,7 +95,7 @@ body{
 }
 #windowicons{
     height: 100%;
-
+    margin-left: 10px;
 }
 
 .cards:nth-child(1):hover{
@@ -116,4 +116,9 @@ body{
 }
 #closebutton:hover{
     cursor: pointer;
+}
+.cards:nth-child(1){
+    filter: grayscale(1000); 
+    pointer-events: none;
+    cursor: not-allowed;
 }
