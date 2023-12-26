@@ -18,9 +18,7 @@ cards[1].addEventListener('click', () => {
     window.ipcAPI.on("repaired", (data) => {
         cards[1].children[2].innerHTML = "Repaired"
     })
-    window.ipcAPI.on("intact", (data) => {
-        cards[1].children[2].innerHTML = "File is Intact"
-    })
+    window.ipcAPI.on("not-installed", (data) => {})5
 })
 
 cards[2].addEventListener('click', () => {

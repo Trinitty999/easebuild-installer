@@ -3,7 +3,7 @@ const path = require('path');
 var fs = require('fs');
 var hashes = require('jshashes');
 var installed = fs.existsSync("testfile.txt")
-
+var dirpath = "C:\\Users\\"+path.sep+"\\AppData\\LocalLow"
 console.log(installed)
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -57,30 +57,23 @@ ipcMain.on("install", (e, arg) => {
 })
 
 ipcMain.on("repair", (e, arg) => {
-	var hashfile = hashes.SHA256().b64(fs.readFile(path.join(__dirname,"testfile.txt")))
-	var def = hashes.SHA256().b64("Hello world!")
 	if (installed){
-		if ( hashfile !== def ) {
-			fs.unlink("testfile.txt", (err) => {
-				if (err) {
-				  console.error(`Error: ${err}`);
-				} else {
-				  console.log('File was deleted succcessfully');
-				}
-			});
-	
-			fs.writeFile('testfile.txt', 'Hello world!', function (err) {
-				if (err) throw err;
-				console.log('Reinstalled successfully');
-			})
-			e.reply("repaired")
-		}
-		else{
-			e.reply("intact")
-		}
+		fs.unlink("testfile.txt", (err) => {
+			if (err) {
+			  console.error(`Error: ${err}`);
+			} else {
+			  console.log('File was deleted succcessfully');
+			}
+		});
+
+		fs.writeFile('testfile.txt', 'Hello world!', function (err) {
+			if (err) throw err;
+			console.log('Reinstalled successfully');
+		})
+		e.reply("repaired")
 	}
 	else {
-		
+		e.reply("not-installed")
 	}
 	
 })
