@@ -56,8 +56,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    user-select: none;
     -webkit-user-select: none;
+    user-select: none;
 }
 .cardsicon:nth-child(1){
     transition: ease-in-out 500ms;    
@@ -88,6 +88,10 @@ body{
     border: none;
     background-color: rgba(0, 0, 0, 0);
     padding: 0;
+    background-attachment: fixed;
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-image: url(../img/xmark-red.svg);
 }
 #windowicons{
     height: 100%;

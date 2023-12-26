@@ -1,6 +1,6 @@
 var cards = document.getElementsByClassName("cards")
 
-document.addEventListener("keydown", (e) => { if (e.key == "f") { alert("idk"); } });
+var closebutton = document.getElementById("closebutton")
 
 cards[0].addEventListener('click', () => {
     window.ipcAPI.send("install");
@@ -9,3 +9,20 @@ cards[0].addEventListener('click', () => {
     })
 })
 
+// closebutton.addEventListener("click", () => {
+//     window.ipcAPI.send("quit")
+// })
+
+cards[1].addEventListener('click', () => {
+    window.ipcAPI.send("repair");
+    window.ipcAPI.on("repaired", (data) => {
+        cards[1].children[2].innerHTML = "Repaired"
+    })
+})
+
+cards[2].addEventListener('click', () => {
+    window.ipcAPI.send("uninstall");
+    window.ipcAPI.on("uninstalled", (data) => {
+        cards[2].children[2].innerHTML = "Uninstalled"
+    })
+})

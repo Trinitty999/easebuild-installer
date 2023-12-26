@@ -53,5 +53,20 @@ ipcMain.on("install", (e, arg) => {
 
 ipcMain.on("repair", (e, arg) => {
 	
-	e.reply("installed")
+	e.reply("repaired")
+})
+
+ipcMain.on("uninstall", (e, arg) => {
+	fs.unlink("mynewfile3.txt", (err) => {
+		if (err) {
+		  console.error(`Error: ${err}`);
+		} else {
+		  console.log('File was deleted successfully');
+		}
+	  });
+	e.reply("uninstalled")
+})
+
+ipcMain.on("quit", () => {
+	app.quit()
 })
