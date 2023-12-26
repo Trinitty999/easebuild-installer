@@ -1,6 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 var fs = require('fs');
+var hashes = require('jshashes');
+var installed = fs.existsSync("testfile.txt")
+
+console.log(installed)
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -44,24 +48,49 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on("install", (e, arg) => {
-	fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+	fs.writeFile('testfile.txt', 'Hello world!', function (err) {
 		if (err) throw err;
-		console.log('Saved!');
+		console.log('Installed successfully');
 	})
+	installed = true;
 	e.reply("installed")
 })
 
 ipcMain.on("repair", (e, arg) => {
+	var hashfile = hashes.SHA256().b64(fs.readFile(path.join(__dirname,"testfile.txt")))
+	var def = hashes.SHA256().b64("Hello world!")
+	if (installed){
+		if ( hashfile !== def ) {
+			fs.unlink("testfile.txt", (err) => {
+				if (err) {
+				  console.error(`Error: ${err}`);
+				} else {
+				  console.log('File was deleted succcessfully');
+				}
+			});
 	
-	e.reply("repaired")
+			fs.writeFile('testfile.txt', 'Hello world!', function (err) {
+				if (err) throw err;
+				console.log('Reinstalled successfully');
+			})
+			e.reply("repaired")
+		}
+		else{
+			e.reply("intact")
+		}
+	}
+	else {
+		
+	}
+	
 })
 
 ipcMain.on("uninstall", (e, arg) => {
-	fs.unlink("mynewfile3.txt", (err) => {
+	fs.unlink("testfile.txt", (err) => {
 		if (err) {
 		  console.error(`Error: ${err}`);
 		} else {
-		  console.log('File was deleted successfully');
+		  console.log('File was deleted succcessfully');
 		}
 	  });
 	e.reply("uninstalled")
