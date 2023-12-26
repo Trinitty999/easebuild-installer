@@ -56,6 +56,8 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    user-select: none;
+    -webkit-user-select: none;
 }
 .cardsicon:nth-child(1){
     transition: ease-in-out 500ms;    

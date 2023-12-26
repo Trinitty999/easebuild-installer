@@ -1,14 +1,20 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
+var fs = require('fs');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
   app.quit();
 }
 
+console.log("test")
+
 const createWindow = () => {
 	// Create the browser window.
 	const win = new BrowserWindow({
+	  webPreferences: {
+		  preload: path.join(__dirname, 'preload.js')
+	  },
 	  width: 1000,
 	  height: 562,
 	  maximizable: false,
@@ -37,3 +43,11 @@ app.on('window-all-closed', () => {
 	}
 });
 
+ipcMain.on("install", (e, arg) => {
+	console.log("it works");
+	fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
+		if (err) throw err;
+		console.log('Saved!');
+	})
+	e.reply("installed")
+})
