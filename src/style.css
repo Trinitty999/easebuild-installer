@@ -27,7 +27,7 @@ body{
     height: 45px;
     -webkit-app-region: drag;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
 }
 #spacer{
@@ -94,8 +94,8 @@ body{
     background-image: url(../img/xmark-red.svg);
 }
 #windowicons{
-    height: 100%;
-    margin-left: 10px;
+    margin-right: 20px;
+    display: flex;
 }
 
 .cards:nth-child(1):hover{
@@ -116,9 +116,4 @@ body{
 }
 #closebutton:hover{
     cursor: pointer;
-}
-.cards:nth-child(1){
-    filter: grayscale(1000); 
-    pointer-events: none;
-    cursor: not-allowed;
 }
