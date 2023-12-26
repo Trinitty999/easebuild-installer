@@ -19,6 +19,8 @@
   "license": "MIT",
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
+    "jshashes": "^1.0.8",
+    "ldrs": "^1.0.1",
     "npm": "^10.2.5",
     "reload": "^3.2.1",
     "start": "^5.1.0"

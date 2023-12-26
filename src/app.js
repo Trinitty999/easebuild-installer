@@ -44,10 +44,14 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on("install", (e, arg) => {
-	console.log("it works");
 	fs.writeFile('mynewfile3.txt', 'Hello content!', function (err) {
 		if (err) throw err;
 		console.log('Saved!');
 	})
+	e.reply("installed")
+})
+
+ipcMain.on("repair", (e, arg) => {
+	
 	e.reply("installed")
 })
