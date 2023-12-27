@@ -42,7 +42,8 @@ app.on('window-all-closed', () => {
 });
 
 ipcMain.on("install", (e, arg) => {
-	fs.writeFile('testfile.txt', 'Hello world!', function (err) {
+	fs.mkdirSync("C:\\Program Files\\test")
+	fs.writeFileSync('C:\\Program Files\\test\\testfile.txt', 'Hello world!', function (err) {
 		if (err) throw err;
 		console.log('Installed successfully');
 	})
@@ -52,15 +53,16 @@ ipcMain.on("install", (e, arg) => {
 
 ipcMain.on("repair", (e, arg) => {
 	if (installed){
-		fs.unlink("testfile.txt", (err) => {
+		fs.unlinkSync("C:\\Program Files\\test\\testfile.txt", (err) => {
 			if (err) {
 			  console.error(`Error: ${err}`);
 			} else {
 			  console.log('File was deleted succcessfully');
 			}
 		});
-
-		fs.writeFile('testfile.txt', 'Hello repaired world!', function (err) {
+		fs.rmdirSync("C:\\Program Files\\test")
+		fs.mkdirSync("C:\\Program Files\\test")
+		fs.writeFileSync('C:\\Program Files\\test\\testfile.txt', 'Hello repaired world!', function (err) {
 			if (err) throw err;
 			console.log('Reinstalled successfully');
 		})
@@ -73,13 +75,14 @@ ipcMain.on("repair", (e, arg) => {
 })
 
 ipcMain.on("uninstall", (e, arg) => {
-	fs.unlink("testfile.txt", (err) => {
+	fs.unlinkSync("C:\\Program Files\\test\\testfile.txt", (err) => {
 		if (err) {
 		  console.error(`Error: ${err}`);
 		} else {
 		  console.log('File was deleted succcessfully');
 		}
 	  });
+	  fs.rmdirSync("C:\\Program Files\\test")
 	e.reply("uninstalled")
 })
 
