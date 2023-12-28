@@ -1,12 +1,24 @@
 var cards = document.getElementsByClassName("cards")
 
-var closebutton = document.getElementById("closebutton")
+var devcode = 0;
 
 document.addEventListener("keydown", (e) => { 
     if (e.key == "q" || e.key == "Q") 
     {
          window.ipcAPI.send("quit");
     } 
+    else if (e.key == "d" || e.key == "D") {
+        devcode += 1
+    }
+    else if (e.key == "e" || e.key == "E") {
+        devcode += 1
+    }
+    else if (e.key == "v" || e.key == "V") {
+        devcode += 1
+    }
+    else if (devcode == 3){
+        window.ipcAPI.send("toggle-devtools");
+    }
 });
 
 cards[0].addEventListener('click', () => {
@@ -19,10 +31,6 @@ cards[0].addEventListener('click', () => {
         }, 5000)
     })
 })
-
-// closebutton.addEventListener("click", () => {
-//     window.ipcAPI.send("quit")
-// })
 
 cards[1].addEventListener('click', () => {
     window.ipcAPI.send("repair");
