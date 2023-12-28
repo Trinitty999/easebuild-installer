@@ -97,6 +97,7 @@ if (require('electron-squirrel-startup')) {
 inform("Creating window...")
 
 //*this function creates a window.
+
 const createWindow = () => {
 	// Create the browser window.
 	const win = new BrowserWindow({
@@ -119,9 +120,20 @@ const createWindow = () => {
 	// else{
 	// 	win.loadFile(path.join(__dirname, 'notadmin.html'));
 	// }
-	if (devmode){
-		win.webContents.openDevTools();
-	}
+	//* Telling the backend to minimize the window when the signal "minimize" is received.
+
+	ipcMain.on("toggle-devtools", (e, arg) => {
+		inform("Dev code received! Opening devtools.")
+		win.webContents.openDevTools();	
+	})
+
+	ipcMain.on("minimize", () => {
+		
+		
+		inform("Minimizing window")
+		win.minimize()
+	})
+	
 };
 
 app.on('ready', createWindow);
@@ -136,13 +148,10 @@ app.on('window-all-closed', () => {
 	}
 });
 
+
 //*Creating all the necessary hooks for installing, repairing and uninstalling
 
-ipcMain.on("toggle-devtools", (e, arg) => {
-	inform("Dev code received! Opening devtools.")
-	devtools = !devtools
-	win.webContents.openDevTools
-})
+
 
 ipcMain.on("install", (e, arg) => {
 	fs.mkdirSync("C:\\Program Files\\test")
@@ -195,5 +204,7 @@ ipcMain.on("uninstall", (e, arg) => {
 //* Telling the backend to end the render process when the signal "quit" is received.
 
 ipcMain.on("quit", () => {
+	warning("Quitting.")
 	app.quit()
 })
+

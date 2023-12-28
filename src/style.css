@@ -33,6 +33,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+
 }
 .cards{
     width: var(--card-width);
@@ -101,4 +102,20 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+#helpmenu{
+     display: none; /*flex */
+    position: absolute;
+    top: 25vh;
+    left: 37.5vw;
+    width: 25vw;
+    height: 25vh;
+    border: 5px solid var(--dark-secondary);
+    border-radius: 17px;
+    background-color: var(--dark-background);
+    justify-content: center;
+    align-items: center;
+}
+#helpmenu > b{
+    color: var(--dark-text);
 }
