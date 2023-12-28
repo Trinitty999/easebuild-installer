@@ -5,14 +5,16 @@ const path = require('path');
 var fs = require('fs');
 var hashes = require('jshashes');
 const { info, error } = require("console");
+const admin = require("admin-check")
+
 var tempdir = process.env.LOCALAPPDATA + "\\Temp"
+
 try{
 	fs.mkdirSync(tempdir+"\\InstallerLogs")
 }
 catch{
 	console.warn("Directory already exists.")
 }
-const admin = require("admin-check")
 var devmode = false;
 
 var logdir = tempdir+"\\InstallerLogs"
@@ -111,12 +113,12 @@ const createWindow = () => {
 	win.setMenu(null);
 	// and load the index.html of the app.
 	
-	if(isAdmin){
+	// if(isAdmin){
 		win.loadFile(path.join(__dirname, 'index.html'));
-	}
-	else{
-		win.loadFile(path.join(__dirname, 'notadmin.html'));
-	}
+	// }
+	// else{
+	// 	win.loadFile(path.join(__dirname, 'notadmin.html'));
+	// }
 	if (devmode){
 		win.webContents.openDevTools();
 	}
@@ -186,7 +188,7 @@ ipcMain.on("uninstall", (e, arg) => {
 		}
 	  });
 	  fs.rmdirSync("C:\\Program Files\\test")
-	  console.log("Uninstalled")
+	  inform("Uninstalled")
 	e.reply("uninstalled")
 })
 
