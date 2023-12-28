@@ -4,6 +4,8 @@ var mainmenu = document.getElementById("content")
 
 var helpmenu = document.getElementById("helpmenu")
 
+var displayhelp = false
+
 document.addEventListener("keydown", (e) => { 
     if (e.key == "q" || e.key == "Q") 
     {
@@ -15,10 +17,18 @@ document.addEventListener("keydown", (e) => {
     } 
     if (e.key == "h" || e.key == "H") 
     {
-        mainmenu.style.display = none;
-        helpmenu.style.display = auto;
+        displayhelp = !displayhelp
+        if(displayhelp){
+            mainmenu.style.display = "none";
+            helpmenu.style.display = "flex";    
+        }
+        else{
+            mainmenu.style.display = "flex";
+            helpmenu.style.display = "none";
+        }
+        
     } 
-    if (e.ctrlKey == true && e.key == "C" || e.key == "c") 
+    if (e.altKey == true && e.key == "I" || e.key == "i") 
     {
          window.ipcAPI.send("toggle-devtools")
     } 

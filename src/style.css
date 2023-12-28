@@ -33,7 +33,7 @@ body{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-
+    transition: ease-in-out 500ms;    
 }
 .cards{
     width: var(--card-width);
@@ -104,17 +104,18 @@ body{
     flex-direction: column;
 }
 #helpmenu{
-     display: none; /*flex */
+    display: none; /*flex */
     position: absolute;
-    top: 25vh;
+    top: 37.5vh;
     left: 37.5vw;
     width: 25vw;
-    height: 25vh;
+    height: 30vh;
     border: 5px solid var(--dark-secondary);
     border-radius: 17px;
     background-color: var(--dark-background);
     justify-content: center;
     align-items: center;
+    transition: ease-in-out 500ms;
 }
 #helpmenu > b{
     color: var(--dark-text);

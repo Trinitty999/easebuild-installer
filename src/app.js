@@ -23,10 +23,6 @@ var logdir = tempdir+"\\InstallerLogs"
 
 var logfilename = btoa(Date())
 
-console.log(Date())
-
-console.log(logfilename)
-
 //*Then it configures the logger.
 
 log4js.configure({
