@@ -15,7 +15,6 @@ try{
 catch{
 	console.warn("Directory already exists.")
 }
-var devmode = false;
 
 var logdir = tempdir+"\\InstallerLogs"
 
@@ -56,22 +55,7 @@ function warning(value){
 }
 
 
-//*Here it checks if the user is admin or not.
 
-
-var isAdmin;
-
-admin.check().then(result => {
-	if (result){
-		isAdmin = true;
-		inform("User is an admin");
-	}
-	else{
-		isAdmin = false;
-		inform("User is not an admin");
-	}
-	
-})
 
 //*It checks if the program is already installed.
 
@@ -108,19 +92,26 @@ const createWindow = () => {
 	});
 
 	win.setMenu(null);
-	// and load the index.html of the app.
-	
-	// if(isAdmin){
-		win.loadFile(path.join(__dirname, 'index.html'));
-	// }
-	// else{
-	// 	win.loadFile(path.join(__dirname, 'notadmin.html'));
-	// }
+	//*Here it checks if the user is admin or not.
+
+	admin.check().then(result => {
+		if (result){
+			win.loadFile(path.join(__dirname, "index.html"))
+			inform("User is an admin");
+		}
+		else{
+			win.loadFile(path.join(__dirname, "notadmin.html"))
+			logerr("User is not an admin");
+		}
+		
+	})
 	//* Telling the backend to minimize the window when the signal "minimize" is received.
 
 	ipcMain.on("toggle-devtools", (e, arg) => {
 		inform("Dev code received! Opening devtools.")
-		win.webContents.openDevTools();	
+		win.webContents.openDevTools({
+			mode: 'detach'
+		});	
 	})
 
 	ipcMain.on("minimize", () => {
@@ -197,10 +188,17 @@ ipcMain.on("uninstall", (e, arg) => {
 	e.reply("uninstalled")
 })
 
-//* Telling the backend to end the render process when the signal "quit" is received.
+//* Telling the backend to clean up the logs and to end the render process when the signal "quit" is received.
 
 ipcMain.on("quit", () => {
 	warning("Quitting.")
+	fs.rm(logdir, { recursive: true, force: true }, (err) => {
+		if (err) {
+		  throw err;
+		  logerr("Log files are not deleted!")
+		}
+		inform('Log files deleted!');
+	  });
 	app.quit()
 })
 

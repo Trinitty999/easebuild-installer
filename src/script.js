@@ -28,7 +28,7 @@ document.addEventListener("keydown", (e) => {
         }
         
     } 
-    if (e.altKey == true && e.key == "I" || e.key == "i") 
+    if (e.altKey == true && e.key == "i") 
     {
          window.ipcAPI.send("toggle-devtools")
     } 
