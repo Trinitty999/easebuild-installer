@@ -190,15 +190,13 @@ ipcMain.on("uninstall", (e, arg) => {
 
 //* Telling the backend to clean up the logs and to end the render process when the signal "quit" is received.
 
+ipcMain.on("clear-cache", (e) => {
+	fs.rmSync(logdir, { force: true, recursive: true });
+		inform('Log files deleted!');
+})
+
 ipcMain.on("quit", () => {
 	warning("Quitting.")
-	fs.rm(logdir, { recursive: true, force: true }, (err) => {
-		if (err) {
-		  throw err;
-		  logerr("Log files are not deleted!")
-		}
-		inform('Log files deleted!');
-	  });
 	app.quit()
 })
 

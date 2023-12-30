@@ -32,6 +32,10 @@ document.addEventListener("keydown", (e) => {
     {
          window.ipcAPI.send("toggle-devtools")
     } 
+    if (e.altKey == true && e.key == "c") 
+    {
+         window.ipcAPI.send("clear-cache")
+    } 
     if (e.ctrlKey == true && e.key == "i" || e.key == "I") 
     {
          window.ipcAPI.send("install");
