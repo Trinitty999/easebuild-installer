@@ -1,3 +1,4 @@
+const { invoke } = window.__TAURI__.core;
 var cards = document.getElementsByClassName("cards")
 
 var mainmenu = document.getElementById("content")
@@ -6,14 +7,16 @@ var helpmenu = document.getElementById("helpmenu")
 
 var displayhelp = false
 
+
+
 document.addEventListener("keydown", (e) => { 
     if (e.key == "q" || e.key == "Q") 
     {
-         window.ipcAPI.send("quit");
+        invoke("close")
     } 
     if (e.key == "m" || e.key == "M") 
     {
-         window.ipcAPI.send("minimize");
+        invoke("minimize")
     } 
     if (e.key == "h" || e.key == "H") 
     {
@@ -30,15 +33,11 @@ document.addEventListener("keydown", (e) => {
     } 
     if (e.altKey == true && e.key == "i") 
     {
-         window.ipcAPI.send("toggle-devtools")
-    } 
-    if (e.altKey == true && e.key == "c") 
-    {
-         window.ipcAPI.send("clear-cache")
+        invoke("toggle-devtools")
     } 
     if (e.ctrlKey == true && e.key == "i" || e.key == "I") 
     {
-         window.ipcAPI.send("install");
+        invoke("install")
          window.ipcAPI.on("installed", (data) => {
             cards[0].children[2].innerHTML = "Installed"
             cards[2].children[2].innerHTML = "Uninstall"
