@@ -3,6 +3,7 @@
   "productName": "installer",
   "version": "0.1.0",
   "identifier": "com.installer.app",
+  
   "build": {
     "frontendDist": "../src"
   },
@@ -11,10 +12,12 @@
     "windows": [
       {
         "title": "installer",
-        "width": 800,
-        "height": 600,
+        "width": 1000,
+        "height": 562,
         "resizable": false,
-        "decorations": false
+        "maximizable": false,
+        "decorations": false,
+        "closable": true
       }
     ],
     "security": {

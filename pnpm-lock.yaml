@@ -7,12 +7,19 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@tauri-apps/plugin-log':
+        specifier: ~2
+        version: 2.0.0
     devDependencies:
       '@tauri-apps/cli':
         specifier: ^2
         version: 2.1.0
 
 packages:
+
+  '@tauri-apps/api@2.1.1':
+    resolution: {integrity: sha512-fzUfFFKo4lknXGJq8qrCidkUcKcH2UHhfaaCNt4GzgzGaW2iS26uFOg4tS3H4P8D6ZEeUxtiD5z0nwFF0UN30A==}
 
   '@tauri-apps/cli-darwin-arm64@2.1.0':
     resolution: {integrity: sha512-ESc6J6CE8hl1yKH2vJ+ALF+thq4Be+DM1mvmTyUCQObvezNCNhzfS6abIUd3ou4x5RGH51ouiANeT3wekU6dCw==}
@@ -79,7 +86,12 @@ packages:
     engines: {node: '>= 10'}
     hasBin: true
 
+  '@tauri-apps/plugin-log@2.0.0':
+    resolution: {integrity: sha512-C+NII9vzswqnOQE8k7oRtnaw0z5TZsMmnirRhXkCKDEhQQH9841Us/PC1WHtGiAaJ8za1A1JB2xXndEq/47X/w==}
+
 snapshots:
+
+  '@tauri-apps/api@2.1.1': {}
 
   '@tauri-apps/cli-darwin-arm64@2.1.0':
     optional: true
@@ -123,3 +135,7 @@ snapshots:
       '@tauri-apps/cli-win32-arm64-msvc': 2.1.0
       '@tauri-apps/cli-win32-ia32-msvc': 2.1.0
       '@tauri-apps/cli-win32-x64-msvc': 2.1.0
+
+  '@tauri-apps/plugin-log@2.0.0':
+    dependencies:
+      '@tauri-apps/api': 2.1.1
